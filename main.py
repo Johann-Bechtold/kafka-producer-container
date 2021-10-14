@@ -18,7 +18,7 @@ print("Starting Python producer.")
 # see https://github.com/edenhill/librdkafka/blob/master/CONFIGURATION.md
 producer = Producer({
     #TODO: configure the location of the bootstrap server
-    'bootstrap.servers': 'kafka:9092',
+    'bootstrap.servers': {'kafka1:9092', 'kafka2:9093', 'kafka3:9094', 'kafka4:9095'},
     'plugin.library.paths': 'monitoring-interceptor',
     'partitioner': 'murmur2_random'
 })

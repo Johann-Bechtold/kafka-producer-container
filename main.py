@@ -2,6 +2,7 @@
 from time import sleep
 import os
 import atexit
+import random
 
 from confluent_kafka import Producer
 
@@ -52,9 +53,10 @@ while True:
     producer.poll(0)
     #TODO: write the lat/long position to a Kafka topic
     #TODO: configure delivery_report as a callback to print the key and value
+    
     producer.produce(
         KAFKA_TOPIC,
-        key=DRIVER_ID,
+        key="driver-" + str(random.randint(0,9)),
         value=line,
         on_delivery=delivery_report)
     sleep(1)
